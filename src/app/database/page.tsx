@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { revalidatePath } from "next/cache";
 
 const uri = process.env.MONGODB_URI;
 if (!uri) {
@@ -38,3 +39,5 @@ export default async function Database() {
     </>
   );
 }
+
+revalidatePath("page");

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Front() {
   const [greeting, setGreeting] = useState("");
@@ -14,7 +15,9 @@ export default function Front() {
   return (
     <div>
       <input value={greeting} onChange={(e) => setGreeting(e.target.value)} />
-      <button onClick={saveGreeting}>send my greeting to the server</button>
+      <Link href="/database">
+        <button onClick={saveGreeting}>send my greeting to the server</button>
+      </Link>
     </div>
   );
 }
