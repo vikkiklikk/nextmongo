@@ -3,9 +3,9 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <Link href="/database">see greetings</Link>
-      <Link href="/front">make a new greeting</Link>
-      <Link href="/back">edit greetings</Link>
+      <Link href="/database">see posts</Link>
+      <Link href="/front">make a new post</Link>
+      <Link href="/back">edit posts</Link>
     </>
   );
 };
