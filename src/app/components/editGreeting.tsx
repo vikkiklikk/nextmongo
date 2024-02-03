@@ -2,36 +2,40 @@
 import { useState } from "react";
 
 type Props = {
-  greetingObj: {
+  postObj: {
     _id: string;
-    greeting: string;
+    title: string;
+    description: string;
   };
 };
-const EditGreeting = ({ greetingObj }: Props) => {
-  const [greeting, setGreeting] = useState("");
-  const changeGreeting = () => {
+const EditGreeting = ({ postObj }: Props) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const changePost = () => {
     fetch("/api", {
       method: "PUT",
-      body: JSON.stringify({ greeting, id: greetingObj._id }),
+      body: JSON.stringify({ title, description, id: postObj._id }),
     });
   };
 
-  const deleteGreeting = () => {
+  const deletePost = () => {
     fetch("/api", {
       method: "DELETE",
-      body: JSON.stringify({ greeting, id: greetingObj._id }),
+      body: JSON.stringify({ postObj, id: postObj._id }),
     });
   };
 
   return (
-    <div key={greetingObj._id.toString()}>
-      <h1> {greetingObj.greeting} </h1>
-      <input
-        value={greeting}
-        onChange={(e) => setGreeting(e.target.value)}
-      ></input>
-      <button onClick={changeGreeting}>change this greeting</button>
-      <button onClick={deleteGreeting}>delete this greeting</button>
+    <div key={postObj._id.toString()}>
+      <h1> {postObj.title} </h1>
+      <h3> {postObj.description} </h3>
+      <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button onClick={changePost}>change this greeting</button>
+      <button onClick={deletePost}>delete this greeting</button>
     </div>
   );
 };

@@ -20,7 +20,7 @@ async function run() {
     // Connect the client to the server (optional starting in v4.7)
     await client.connect();
     // Querying our database
-    const cursor = await client.db("test").collection("greetings").find();
+    const cursor = await client.db("test").collection("blogposts").find();
     const array = await cursor.toArray();
     return array;
   } finally {
@@ -30,11 +30,13 @@ async function run() {
 }
 
 export default async function Database() {
-  const greetings = await run();
+  const posts = await run();
   return (
     <>
-      {greetings.map((greetingObj) => (
-        <h1 key={greetingObj.id}>{greetingObj.greeting}</h1>
+      {posts.map((postObj) => (
+        <h1 key={postObj.id}>
+          {postObj.title} <br></br> {postObj.description}
+        </h1>
       ))}
     </>
   );
