@@ -29,17 +29,23 @@ async function run() {
   }
 }
 
-export default async function Database() {
+async function renderPosts() {
   const posts = await run();
+
   return (
     <>
+      <p>Here are the posts</p>
       {posts.map((postObj) => (
         <h1 key={postObj.id}>
-          {postObj.title} <br></br> {postObj.description}
+          {postObj.title} {postObj.description}
         </h1>
       ))}
     </>
   );
 }
 
-revalidatePath("page");
+export default async function Database() {
+  return renderPosts();
+}
+
+revalidatePath("/src/app/database/page.tsx");

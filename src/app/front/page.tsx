@@ -13,13 +13,24 @@ export default function Front() {
       body: JSON.stringify({ title, description }),
     });
   };
+
+  const previewPost = () => {
+    // preview post logic here
+  };
+
   return (
     <div>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input
+        placeholder="Enter Title Here"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <textarea
+        placeholder="Enter Post Description Here"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
+      <button onClick={previewPost}>Preview Post</button>
       <Link href="/database">
         <button onClick={savePost}>send my post to the server</button>
       </Link>
