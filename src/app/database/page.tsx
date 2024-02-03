@@ -36,9 +36,17 @@ async function renderPosts() {
     <>
       <p>Here are the posts</p>
       {posts.map((postObj) => (
-        <h1 key={postObj.id}>
-          {postObj.title} {postObj.description}
-        </h1>
+        <div
+          key={postObj.id}
+          style={{
+            marginBottom: "20px",
+            padding: "10px",
+            borderBottom: "1px solid #ccc",
+          }}
+        >
+          <h1>{postObj.title}</h1>
+          <h3>{postObj.description}</h3>
+        </div>
       ))}
     </>
   );

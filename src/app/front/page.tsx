@@ -19,7 +19,9 @@ export default function Front() {
   };
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <input
         placeholder="Enter Title Here"
         value={title}
@@ -30,10 +32,14 @@ export default function Front() {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button onClick={previewPost}>Preview Post</button>
-      <Link href="/database">
-        <button onClick={savePost}>send my post to the server</button>
-      </Link>
+      <div style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}>
+        <button onClick={previewPost}>Preview Post</button>
+        <Link href="/database">
+          <button onClick={savePost} style={{ marginLeft: "10px" }}>
+            Send my post to the server
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

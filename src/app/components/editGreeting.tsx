@@ -61,20 +61,26 @@ const EditGreeting = ({ postObj }: Props) => {
 
   return (
     <div key={postObj._id.toString()}>
-      <h1> {postObj.title} </h1>
-      <h3> {postObj.description} </h3>
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        style={{ border: title ? "1px solid #ccc" : "1px solid red" }} // Apply conditional inline style
-      ></input>
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        style={{ border: description ? "1px solid #ccc" : "1px solid red" }} // Apply conditional inline style
-      />
-      <button onClick={changePost}>change this greeting</button>
-      <button onClick={deletePost}>delete this greeting</button>
+      <div style={{ marginBottom: "10px" }}>
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          style={{ border: title ? "1px solid #ccc" : "1px solid red" }}
+          placeholder="Enter Title"
+        ></input>
+      </div>
+      <div style={{ marginBottom: "10px" }}>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          style={{ border: description ? "1px solid #ccc" : "1px solid red" }}
+          placeholder="Enter Description"
+        />
+      </div>
+      <div style={{ marginBottom: "10px" }}>
+        <button onClick={changePost}>change this greeting</button>
+        <button onClick={deletePost}>delete this greeting</button>
+      </div>
       {changeMessage && <div style={{ color: "green" }}>{changeMessage}</div>}
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
     </div>
