@@ -1,21 +1,28 @@
 import EditGreeting from "../components/editGreeting";
-//since we are using TypeScript we need to declare our type first
+
 type Greeting = {
   greeting: string;
   _id: string;
 };
+
 export default async function Back() {
-  const baseUrl = "http://localhost:3000";
-  const response = await fetch(`${baseUrl}/api`);
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
+  // Adding a cache-busting query parameter
+  const response = await fetch(`${baseUrl}/api?timestamp=${Date.now()}`, {
+    cache: "no-store",
+  });
   const greetings: Greeting[] = await response.json();
+
   return (
-    <div>
-      {greetings.map((greetingObj) => (
-        <EditGreeting
-          greetingObj={greetingObj}
-          key={greetingObj._id.toString()}
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {greetings.map((greetingObj) => (
+          <EditGreeting greetingObj={greetingObj} key={greetingObj._id} />
+        ))}
+      </div>
+    </>
   );
 }

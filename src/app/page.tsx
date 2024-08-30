@@ -2,5 +2,5 @@
 
 export default function Both() {
   console.log("hello world");
-  return <h1>Some content</h1>;
+  return <h1>Visit posts to see posts!</h1>;
 }
